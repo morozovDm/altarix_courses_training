@@ -1,2 +1,2 @@
 # altarix_courses_training
-Altarix courses training by Morozov Dmitriy
+Altarix's courses training by Morozov Dmitriy
