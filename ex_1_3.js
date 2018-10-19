@@ -13,6 +13,9 @@ function formatting(value){ // форматирует число к необхо
 }
 try{
   console.log(formatting(-10023456.24));  
+ console.log(formatting(1023456.2)); 
+ console.log(formatting(3456.2456)); 
+ console.log(formatting(-10023456)); 
 }catch(e) {
   console.log(e);
 }
