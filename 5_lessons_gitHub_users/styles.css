@@ -1,0 +1,36 @@
+table {
+  margin-top: 10px;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid lightslategrey;
+    padding: 3px;
+    /* text-align: center; */
+  }
+
+td {
+    height: 50px;
+    width: 250px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+  th {
+    font-weight: bold;
+    background-color: #E6E6E6;
+  }
+
+  img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .active {
+      background-color: firebrick;
+  }
