@@ -1,7 +1,8 @@
 function loadGitHubUsers(searchString ) {
     fetch('https://api.github.com/search/users?q=' + searchString)
         .then(function (response) {
-            return response.json();
+            if(response.status === 200)
+                return response.json();
         })
         .then(searchResultToTable)
         .catch(function (err) {
