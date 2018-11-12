@@ -1,7 +1,7 @@
 function calculate(operand_1, operator, operand_2){
     operand_1 = Number(operand_1);
     operand_2 = Number(operand_2);
-    if(typeof operand_1 !== "number" || typeof operand_2 !== "number") 
+    if(Number.isNaN(operand_1) || Number.isNaN(operand_2)) 
       throw new Error("one of operands is not a number");
     switch(operator) {
       case '+':
