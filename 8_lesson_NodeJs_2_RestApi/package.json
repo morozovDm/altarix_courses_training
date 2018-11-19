@@ -1,0 +1,11 @@
+{
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "5.3.12",
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "jsonwebtoken": "8.4.0",
+    "cors": "2.8.5",
+    "crypto": "1.0.1"
+  }
+}
