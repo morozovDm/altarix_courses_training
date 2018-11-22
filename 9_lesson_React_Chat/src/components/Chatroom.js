@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import Message from './Message.js'
 import SendMessageForm from './SendMessageForm.js'
 class Chatroom extends Component {
+  
+  username = "Morozov Dmitriy";
+  
   constructor(props) {
     super(props);
 
@@ -46,7 +49,7 @@ class Chatroom extends Component {
 
   render() {
     let { messages } = this.state;
-    this.username = "Morozov Dmitriy";
+    
     return (
       <div className="Chatroom">
         <ul className='messagesList' ref='messagesList'>
