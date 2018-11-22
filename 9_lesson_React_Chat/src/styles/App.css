@@ -1,11 +1,12 @@
 .App {
   text-align: center;
   justify-content: center;
+  margin: 0 auto;
+  width: 85%;
+  height: 100%;
 }
 
 .Title {
-  margin: 0 auto;
-  width: 85%;
   display:flex;
   padding-left: 20px;
   background-color: cornflowerblue;
@@ -14,32 +15,10 @@
 
 .Chatroom {
   margin: 0 auto;
-  width: 85%;
   height: auto;
 }
 
-.chat {
- position: relative;
-  padding: 5px 13px;
-  font-size: 14px;
-  list-style: none;
-  float: left;
-  clear: both;
-  margin: 10px 0;
-  max-width: 75%;
-  display: flex;
-  align-items: center; 
-}
-
-.msg-content {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 5px 13px;
-  border-radius: 10px;
-  margin: 10px 0;
-  /* max-width: 200px; */
-}
-
-.chats {
+.messages {
   box-sizing: border-box;
   padding: 0 20px;
   margin: 10px 0 0;
@@ -48,14 +27,48 @@
   background-color: aliceblue;
 }
 
-.chat.right {
-  float: right;
+.message {
+ position: relative;
+  padding: 5px 13px;
+  font-size: 14px;
+  list-style: none;
+  float: left;
   clear: both;
+  margin: 10px 0;
+  display: flex;
+  /* align-items: center;  */
 }
 
 .msg-sender {
   color: grey;
   font-size: 12px;
+}
+
+.msg-content {
+  background: rgb(104, 212, 77, 0.8);
+  padding: 5px 13px;
+  border-radius: 10px;
+  margin: 10px 0;
+  margin-left: 10px;
+  max-width: 200px;
+}
+
+.message img {
+  width: 25px;
+}
+
+.message.right {
+  float: right;
+  clear: both;
+}
+
+.message.right .msg-content {
+  background-color: rgba(233, 229, 229, 0.8)
+}
+
+.message.right :first-child{
+  order: 2;
+  margin-left: 10px;
 }
 
 .SendMessageForm {
@@ -66,10 +79,10 @@
 }
 
 .SendMessageForm input {
-  width: 85%;
+  width: 95%;
   height: 25px;
-  /* padding: 10px 20px; */
 }
+
 .SendMessageForm button {
   width: 30px;
   height: 30px;
