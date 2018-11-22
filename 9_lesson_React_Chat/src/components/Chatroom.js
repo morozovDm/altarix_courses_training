@@ -25,17 +25,23 @@ class Chatroom extends Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this.refs.messages).scrollTop = ReactDOM.findDOMNode(this.refs.messages).scrollHeight
+    ReactDOM.findDOMNode(this.refs.messagesList).scrollTop = ReactDOM.findDOMNode(this.refs.messagesList).scrollHeight
+  }
+
+  componentDidUpdate() {
+    ReactDOM.findDOMNode(this.refs.messagesList).scrollTop = ReactDOM.findDOMNode(this.refs.messagesList).scrollHeight
   }
 
   submitMessage(e) {
-    e.preventDefault()
     this.setState({
-      chats: this.state.messages.concat([{
-        username: this.username,
-        content: <p>{ReactDOM.findDOMNode(this.refs.msg).value}</p>
-      }])
+      messages: this.state.messages.concat(
+        {
+          username: "Morozov Dmitriy",
+          content: <p>{e}</p>,
+        }
+      )
     })
+    console.log(this.state.messages)
   }
 
   render() {
@@ -43,7 +49,7 @@ class Chatroom extends Component {
     this.username = "Morozov Dmitriy";
     return (
       <div className="Chatroom">
-        <ul className='messages' ref='messages'>
+        <ul className='messagesList' ref='messagesList'>
           {
             messages.map(message =>
               <Message message={message} user={this.username} />
