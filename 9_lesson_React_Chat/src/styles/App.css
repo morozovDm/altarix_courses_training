@@ -2,7 +2,8 @@
   text-align: center;
   justify-content: center;
   margin: 0 auto;
-  width: 85%;
+  width: 55%;
+  min-width: 200px;
 }
 
 .Title {
@@ -16,13 +17,23 @@
   margin: 0 auto;
 }
 
-.messagesList {
-  box-sizing: border-box;
-  padding: 0 20px;
-  margin: 10px 0 0;
-  height: 80vh;
+.MessagesList-container{
   overflow-y: scroll;
+  height: 80vh;
+  margin: 10px 0 0;
   background-color: aliceblue;
+}
+
+.messagesList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: auto;
+  min-height: 80vh;
+  /* overflow-y: scroll; */
+  
 }
 
 .message {
@@ -34,7 +45,6 @@
   clear: both;
   margin: 10px 0;
   display: flex;
-  /* align-items: center;  */
 }
 
 .msg-sender {
@@ -43,25 +53,27 @@
 }
 
 .msg-content {
-  background: rgb(104, 212, 77, 0.8);
+  background: rgba(194, 228, 255, 0.8);
   padding: 5px 13px;
   border-radius: 10px;
   margin: 10px 0;
   margin-left: 10px;
   max-width: 200px;
+  height: max-content;
 }
 
 .message img {
   width: 25px;
+  padding: 10px 0;
 }
 
 .message.right {
-  float: right;
+  margin-left: auto;
   clear: both;
 }
 
 .message.right .msg-content {
-  background-color: rgba(233, 229, 229, 0.8)
+  background-color: rgba(233, 229, 229, 0.8);
 }
 
 .message.right :first-child{
@@ -71,19 +83,22 @@
 
 .SendMessageForm {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 15px 5px;
+  margin-top: 10px;
+  padding: 15px 5px;
+  background-color: cornflowerblue;
 }
 
 .SendMessageForm input {
   width: 95%;
   height: 25px;
+  
 }
 
 .SendMessageForm button {
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  /* margin-right: 15px; */
 }

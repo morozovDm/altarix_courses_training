@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import Message from './Message.js'
 import SendMessageForm from './SendMessageForm.js'
 class Chatroom extends Component {
-  
   username = "Morozov Dmitriy";
-  
   constructor(props) {
     super(props);
 
@@ -19,7 +17,12 @@ class Chatroom extends Component {
 
       }, {
         username: "Morozov Dmitriy",
-        content: <p>(((</p>,
+        content: <p>"(((</p>,
+
+      },
+      {
+        username: "Петр Петров",
+        content: <p>Че?</p>,
 
       }]
     };
@@ -44,21 +47,21 @@ class Chatroom extends Component {
         }
       )
     })
-    console.log(this.state.messages)
   }
 
   render() {
     let { messages } = this.state;
-    
     return (
       <div className="Chatroom">
-        <ul className='messagesList' ref='messagesList'>
-          {
-            messages.map(message =>
-              <Message message={message} user={this.username} />
-            )
-          }
-        </ul>
+        <div className='MessagesList-container' ref='messagesList'>
+          <ul className='messagesList' >
+            {
+              messages.map(message =>
+                <Message message={message} user={this.username} />
+              )
+            }
+          </ul>
+        </div>
         <SendMessageForm onSubmit={this.submitMessage} />
       </div>
     );
