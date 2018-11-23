@@ -4,13 +4,15 @@
   margin: 0 auto;
   width: 55%;
   min-width: 200px;
+  
 }
 
 .Title {
   display:flex;
   padding-left: 20px;
-  background-color: cornflowerblue;
+  background-color: #3ba1ee;
   color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .Chatroom {
@@ -21,7 +23,8 @@
   overflow-y: scroll;
   height: 80vh;
   margin: 10px 0 0;
-  background-color: aliceblue;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .messagesList {
@@ -32,13 +35,11 @@
   padding: 0 10px;
   height: auto;
   min-height: 80vh;
-  /* overflow-y: scroll; */
-  
 }
 
 .message {
- position: relative;
-  padding: 5px 13px;
+  position: relative;
+  padding: 0 10px;
   font-size: 14px;
   list-style: none;
   float: left;
@@ -50,20 +51,24 @@
 .msg-sender {
   color: grey;
   font-size: 12px;
+  max-width: 60px;
+  text-align: center;
 }
 
 .msg-content {
-  background: rgba(194, 228, 255, 0.8);
+  background: #3ba1ee;
+  color: white;
   padding: 5px 13px;
   border-radius: 10px;
   margin: 10px 0;
   margin-left: 10px;
   max-width: 200px;
   height: max-content;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  word-break: break-word;
 }
 
 .message img {
-  width: 25px;
   padding: 10px 0;
 }
 
@@ -73,7 +78,8 @@
 }
 
 .message.right .msg-content {
-  background-color: rgba(233, 229, 229, 0.8);
+  color: black;
+  background-color: #e6e6e6;
 }
 
 .message.right :first-child{
@@ -86,7 +92,8 @@
   align-items: center;
   margin-top: 10px;
   padding: 15px 5px;
-  background-color: cornflowerblue;
+  background-color: #3ba1ee;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .SendMessageForm input {

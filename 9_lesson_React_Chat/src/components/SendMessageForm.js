@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Chatroom from './Chatroom.js';
 import MessageButton from '../resources/message.svg'
 class SendMessageForm extends Component {
   state = {
