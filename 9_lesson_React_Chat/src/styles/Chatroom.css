@@ -1,0 +1,21 @@
+.Chatroom {
+  margin: 0 auto;
+}
+
+.MessagesList-container{
+  overflow-y: scroll;
+  height: 80vh;
+  margin: 10px 0 0;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.messagesList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: auto;
+  min-height: 80vh;
+}

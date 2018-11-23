@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import '../styles/SendMessageForm.css'
 import MessageButton from '../resources/message.svg'
+
 class SendMessageForm extends Component {
   state = {
     text: ''
@@ -9,7 +11,9 @@ class SendMessageForm extends Component {
     e.preventDefault()
     if (this.state.text !== '')
       this.props.onSubmit(this.state.text)
-    this.state.text = ''
+    this.setState({
+      text: ''
+    })
   }
 
   onChange = (e) => {
