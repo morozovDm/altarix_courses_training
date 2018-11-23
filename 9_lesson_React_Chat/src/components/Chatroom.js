@@ -19,7 +19,7 @@ class Chatroom extends Component {
       {
         id: Date.now() - 2,
         username: "Morozov Dmitriy",
-        content: <p>"(((</p>,
+        content: <p>(((</p>,
       },
       {
         id: Date.now() - 1,
