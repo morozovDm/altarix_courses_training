@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-class Title extends Component {
-  render() {
-    return (
-      <div className='Title'><h1>Chat</h1></div>
-    );
-  }
+
+function Title(props) {
+  return <div className='Title'><h1>Chat v0.3</h1></div>;
 }
 
 export default Title;

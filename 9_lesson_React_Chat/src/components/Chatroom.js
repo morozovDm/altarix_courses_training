@@ -4,31 +4,29 @@ import Message from './Message.js'
 import SendMessageForm from './SendMessageForm.js'
 class Chatroom extends Component {
   username = "Morozov Dmitriy";
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      messages: [{
+  state = {
+    messages: [
+      {
+        id: Date.now() - 4,
         username: "Петр Петров",
         content: <p>Привет!</p>
-      }, {
-        username: "Петр Петров",
-        content: <p>Как дела с JavaScript?</p>,
-
-      }, {
-        username: "Morozov Dmitriy",
-        content: <p>"(((</p>,
-
       },
       {
+        id: Date.now() - 3,
+        username: "Петр Петров",
+        content: <p>Как дела с JavaScript?</p>,
+      },
+      {
+        id: Date.now() - 2,
+        username: "Morozov Dmitriy",
+        content: <p>"(((</p>,
+      },
+      {
+        id: Date.now() - 1,
         username: "Петр Петров",
         content: <p>Че?</p>,
-
       }]
-    };
-
-    this.submitMessage = this.submitMessage.bind(this)
-  }
+  };
 
   componentDidMount() {
     ReactDOM.findDOMNode(this.refs.messagesList).scrollTop = ReactDOM.findDOMNode(this.refs.messagesList).scrollHeight
@@ -36,14 +34,16 @@ class Chatroom extends Component {
 
   componentDidUpdate() {
     ReactDOM.findDOMNode(this.refs.messagesList).scrollTop = ReactDOM.findDOMNode(this.refs.messagesList).scrollHeight
+    console.log(this.state)
   }
 
-  submitMessage(e) {
+  submitMessage = (e) => {
     this.setState({
       messages: this.state.messages.concat(
         {
           username: "Morozov Dmitriy",
           content: <p>{e}</p>,
+          id: Date.now()
         }
       )
     })
