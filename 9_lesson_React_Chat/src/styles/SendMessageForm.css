@@ -3,8 +3,9 @@
   align-items: center;
   margin-top: 10px;
   padding: 15px 5px;
-  background-color: #3ba1ee;
+  background-image: linear-gradient(#3590d6, #3571a4);
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
 }
 
 .SendMessageForm input {
@@ -14,10 +15,24 @@
   border-radius: 5px;
 }
 
+.SendMessageForm input:focus::placeholder{
+  color: lightgrey;
+}
+
 .SendMessageForm button {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
+  width: 38px;
+  height: 38px;
+  border-radius: 30px;
   margin-left: 10px;
   cursor: pointer;
+  background-color: #3590d6;
+  border-color: #4eaaef;
+}
+
+.SendMessageForm button:hover {
+  background-color: #4eaaef;
+}
+
+.SendMessageForm button img {
+  width: 100%;
 }

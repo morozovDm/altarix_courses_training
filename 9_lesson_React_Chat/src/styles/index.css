@@ -10,6 +10,10 @@ body {
   background-image: linear-gradient(#337ab7, #3571a4);
 }
 
+*:focus {
+    outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

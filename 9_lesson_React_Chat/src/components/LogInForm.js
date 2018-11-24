@@ -25,10 +25,10 @@ class LogInForm extends Component {
   render() {
     return (
       <div className='LogInForm'>
-        <h1>LogIn</h1>
+        <h1>Log In</h1>
         <form onSubmit={this.onSubmitLogin}>
           <input className='username-input' type='text' placeholder='Input username...' value={this.state.text} onChange={this.onChange}></input>
-          <button type="submit" value="Submit">LogIn</button>
+          <button className='logIn-btn' type="submit" value="Submit">Log In</button>
         </form>
       </div>
     )

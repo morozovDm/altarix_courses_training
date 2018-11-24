@@ -6,7 +6,6 @@ import SendMessageForm from './SendMessageForm.js'
 import LogInForm from './LogInForm.js'
 
 class App extends Component {
-  // username = "Морозов Дмитрий";
   username = "";
   state = {
     isLogin: false,

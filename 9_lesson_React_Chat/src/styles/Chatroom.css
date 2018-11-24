@@ -3,8 +3,8 @@
 }
 
 .MessagesList-container{
-  overflow-y: scroll;
-  height: 80vh;
+  overflow-y: auto;
+  height: 75vh;
   margin: 10px 0 0;
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
