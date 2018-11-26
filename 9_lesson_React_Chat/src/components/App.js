@@ -36,10 +36,17 @@ class App extends Component {
       }]
   };
 
-  onLogIn = (logIn) => {
-    this.username = logIn
+  onLogIn = (login) => {
+    this.username = login
     this.setState({
       isLogin: true
+    })
+  }
+
+  onLogOut = () => {
+    this.username = ''
+    this.setState({
+      isLogin: false
     })
   }
 
@@ -60,7 +67,7 @@ class App extends Component {
     if(this.state.isLogin) {
       return (
         <div className="Chat">
-          <Title />
+          <Title login={this.username} onLogOut={this.onLogOut}/>
           <Chatroom username={this.username} messages={this.state.messages} />
           <SendMessageForm onSubmit={this.submitMessage} />
         </div>
@@ -69,7 +76,7 @@ class App extends Component {
     else {
       return(
         <div className='chat-login'>
-          <LogInForm onLogIn={this.onLogIn}/>
+          <LogInForm onLogIn={this.onLogIn} />
         </div>
       )
     }

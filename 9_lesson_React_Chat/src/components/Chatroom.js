@@ -6,7 +6,6 @@ import Message from './Message.js'
 class Chatroom extends Component {
  
   componentDidMount() {
-    console.log(ReactDOM.findDOMNode(this.refs.messagesList))
     ReactDOM.findDOMNode(this.refs.messagesList).scrollTop = ReactDOM.findDOMNode(this.refs.messagesList).scrollHeight
   }
 

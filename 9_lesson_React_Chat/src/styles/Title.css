@@ -1,7 +1,27 @@
 .Title {
   display:flex;
-  padding-left: 20px;
+  padding: 0 20px;
   background-image: linear-gradient(#3BA1EE, #3571a4);
   color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logOut {
+  cursor: pointer;
+}
+
+.logOut-btn {
+  border-width: 2px;
+}
+
+.logOut img {
+  width: 12px;
+  height: 12px;
+  margin: -1px 5px;
+}
+
+.logOut-btn:hover {
+  color: orange;
 }
