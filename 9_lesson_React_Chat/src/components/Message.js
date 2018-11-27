@@ -5,8 +5,8 @@ import icon from '../resources/anonymus.svg'
 
 class Message extends Component {
 
-  componentDidMount(){
-    console.log(this.props.user,this.props.user === this.props.message.username,this.props.message.username)
+  componentDidMount() {
+    console.log(this.props.user, this.props.user === this.props.message.username, this.props.message.username)
   }
 
   render() {
@@ -25,7 +25,7 @@ class Message extends Component {
           <div className='msg-content'>
             {this.props.message.content}
           </div>
-            {this.props.message.time}
+          {this.props.message.time}
         </div>
       </li >
     );

@@ -1,7 +1,6 @@
 .SendMessageForm {
   display: flex;
   align-items: center;
-  margin-top: 10px;
   padding: 15px 5px;
   background-image: linear-gradient(#3590d6, #3571a4);
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -9,10 +8,11 @@
 }
 
 .SendMessageForm input {
-  width: 95%;
+  width: 90%;
   height: 30px;
   padding-left: 10px;
   border-radius: 5px;
+  border-color: #4eaaef;
 }
 
 .SendMessageForm input:focus::placeholder{
@@ -20,13 +20,14 @@
 }
 
 .SendMessageForm button {
-  width: 38px;
-  height: 38px;
+  width: 35px;
+  height: 35px;
   border-radius: 30px;
   margin-left: 10px;
   cursor: pointer;
   background-color: #3590d6;
   border-color: #4eaaef;
+  transition: background-color 0.1s;
 }
 
 .SendMessageForm button:hover {

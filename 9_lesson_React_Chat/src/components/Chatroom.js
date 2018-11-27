@@ -4,7 +4,7 @@ import '../styles/Chatroom.css'
 import Message from './Message.js'
 
 class Chatroom extends Component {
- 
+
   componentDidMount() {
     ReactDOM.findDOMNode(this.refs.messagesList).scrollTop = ReactDOM.findDOMNode(this.refs.messagesList).scrollHeight
   }
@@ -21,7 +21,10 @@ class Chatroom extends Component {
           <ul className='messagesList' >
             {
               messages.map(message =>
-                <Message key={message.id} message={message} user={this.props.username} />
+                <Message 
+                  key={message.id} 
+                  message={message} 
+                  user={this.props.username} />
               )
             }
           </ul>

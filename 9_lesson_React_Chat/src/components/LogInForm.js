@@ -27,7 +27,9 @@ class LogInForm extends Component {
       <div className='LogInForm'>
         <h1>Log In</h1>
         <form onSubmit={this.onSubmitLogin}>
-          <input className='username-input' type='text' placeholder='Input username...' value={this.state.text} onChange={this.onChange}></input>
+          <input className='username-input' type='text' placeholder='Input username...'
+            value={this.state.text}
+            onChange={this.onChange}></input>
           <button className='logIn-btn' type="submit" value="Submit">Log In</button>
         </form>
       </div>

@@ -1,11 +1,7 @@
-.Chatroom {
-  margin: 0 auto;
-}
-
-.MessagesList-container{
+.MessagesList-container {
   overflow-y: auto;
-  height: 75vh;
-  margin: 10px 0 0;
+  height: 78vh;
+  margin: 10px 0;
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
@@ -13,9 +9,25 @@
 .messagesList {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  box-sizing: border-box;
+  justify-content: flex-end; /*новые сообщения появляются снизу*/
   padding: 0 10px;
-  height: auto;
   min-height: 80vh;
+}
+
+.MessagesList-container::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.MessagesList-container::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: lightgray;
+}
+
+.MessagesList-container::-webkit-scrollbar-thumb:hover
+{
+	border-radius: 10px;
+	background-color: #dbdbdb;
 }

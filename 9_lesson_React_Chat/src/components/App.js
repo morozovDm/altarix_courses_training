@@ -50,12 +50,12 @@ class App extends Component {
     })
   }
 
-  submitMessage = (e) => {
+  onSubmitMessage = (message) => {
     this.setState({
       messages: this.state.messages.concat(
         {
           username: this.username,
-          content: <p>{e}</p>,
+          content: <p>{message}</p>,
           id: Date.now(),
           time: new Date().toLocaleString(),
         }
@@ -64,19 +64,25 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.isLogin) {
+    if (this.state.isLogin) {
       return (
         <div className="Chat">
-          <Title login={this.username} onLogOut={this.onLogOut}/>
-          <Chatroom username={this.username} messages={this.state.messages} />
-          <SendMessageForm onSubmit={this.submitMessage} />
+          <Title
+            login={this.username}
+            onLogOut={this.onLogOut} />
+          <Chatroom
+            username={this.username}
+            messages={this.state.messages} />
+          <SendMessageForm
+            onSubmit={this.onSubmitMessage} />
         </div>
       );
     }
     else {
-      return(
+      return (
         <div className='chat-login'>
-          <LogInForm onLogIn={this.onLogIn} />
+          <LogInForm
+            onLogIn={this.onLogIn} />
         </div>
       )
     }

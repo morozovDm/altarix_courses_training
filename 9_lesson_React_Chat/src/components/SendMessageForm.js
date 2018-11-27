@@ -25,8 +25,11 @@ class SendMessageForm extends Component {
   render() {
     return (
       <form className="SendMessageForm" onSubmit={this.onSubmitMessage}>
-        <input type="text" ref="msg" placeholder='Input message...' value={this.state.text} onChange={this.onChange} />
-        <button type="submit" value="Submit" ><img src={MessageButton} alt='msg-btn'></img></button>
+        <input type="text" ref="msg" placeholder='Input message...'
+          value={this.state.text}
+          onChange={this.onChange} />
+        <button type="submit" value="Submit" ><img src={MessageButton} alt='msg-btn'></img>
+        </button>
       </form>
     );
   }
