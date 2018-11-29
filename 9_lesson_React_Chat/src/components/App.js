@@ -44,10 +44,6 @@ class App extends Component {
           text: message
     }
     db.ref(`/messages/${now}`).set(msg);
-	  
-    this.setState({
-      messages: this.state.messages.concat(msg)
-    })
   }
 
   render() {
