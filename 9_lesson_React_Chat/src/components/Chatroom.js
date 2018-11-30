@@ -21,9 +21,15 @@ class Chatroom extends Component {
           <ul className='messagesList' >
             {
               messages.map(message =>
-                <Message 
-                  key={message.id} 
-                  message={message} 
+                <Message
+                  key={message.id}
+                  message={typeof message.text !== 'object'
+                    ? message
+                    : {
+                      name: message.name,
+                      id: message.id,
+                      text: 'invalid text'
+                    }}
                   user={this.props.username} />
               )
             }

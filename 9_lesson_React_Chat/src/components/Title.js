@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../styles/Title.css'
 import logOutImg from '../resources/logout.svg'
 
-class Title extends React.Component {
+class Title extends Component {
 
   logOut = (e) => {
     this.props.onLogOut()

@@ -24,8 +24,7 @@ class App extends Component {
     const messagesRef = db.ref('messages');
 		messagesRef.on('value', (snapshot) => {
 			this.setState({ 
-       				 messages: Object.values(snapshot.val()) 
-			});
+        messages: Object.values(snapshot.val()) });
 		});
   }
 

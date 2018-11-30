@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../styles/Message.css'
 import ClassNames from 'classnames'
 import icon from '../resources/anonymus.svg'
+import PropTypes from 'prop-types';
+
 
 class Message extends Component {
 
@@ -26,6 +28,14 @@ class Message extends Component {
       </li >
     );
   }
+}
+
+Message.propTypes = {
+  message: PropTypes.shape({
+    text: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
+  })
 }
 
 export default Message;
