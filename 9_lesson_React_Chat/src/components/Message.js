@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import '../styles/Message.css'
-import ClassNames from 'classnames'
-import icon from '../resources/anonymus.svg'
-import PropTypes from 'prop-types';
-
+import React, { Component } from "react";
+import "../styles/Message.css";
+import ClassNames from "classnames";
+import icon from "../resources/anonymus.svg";
 
 class Message extends Component {
-
   render() {
     var msg = ClassNames({
       message: true,
@@ -15,27 +12,20 @@ class Message extends Component {
     });
     return (
       <li className={msg}>
-        <div className='msg-sender'>
-          <img src={this.props.message.img ? this.props.message.img : icon} alt='anonymous'></img>
+        <div className="msg-sender">
+          <img
+            src={this.props.message.img ? this.props.message.img : icon}
+            alt="anonymous"
+          />
           <div>{this.props.message.name}</div>
         </div>
         <div>
-          <div className='msg-content'>
-            {this.props.message.text}
-          </div>
+          <div className="msg-content">{this.props.message.text}</div>
           {new Date(this.props.message.id).toLocaleString()}
         </div>
-      </li >
+      </li>
     );
   }
-}
-
-Message.propTypes = {
-  message: PropTypes.shape({
-    text: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
-  })
 }
 
 export default Message;

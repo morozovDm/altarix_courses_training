@@ -3,7 +3,7 @@
   height: 78vh;
   margin: 10px 0;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .messagesList {
@@ -14,20 +14,17 @@
   min-height: 80vh;
 }
 
-.MessagesList-container::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
+.MessagesList-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
 }
 
-.MessagesList-container::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-color: lightgray;
+.MessagesList-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: lightgray;
 }
 
-.MessagesList-container::-webkit-scrollbar-thumb:hover
-{
-	border-radius: 10px;
-	background-color: #dbdbdb;
+.MessagesList-container::-webkit-scrollbar-thumb:hover {
+  border-radius: 10px;
+  background-color: #dbdbdb;
 }

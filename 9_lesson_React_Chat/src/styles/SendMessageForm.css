@@ -3,7 +3,7 @@
   align-items: center;
   padding: 15px 5px;
   background-image: linear-gradient(#3590d6, #3571a4);
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
 
@@ -15,7 +15,7 @@
   border-color: #4eaaef;
 }
 
-.SendMessageForm input:focus::placeholder{
+.SendMessageForm input:focus::placeholder {
   color: lightgrey;
 }
 

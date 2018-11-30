@@ -1,74 +1,79 @@
-import Chatroom from './Chatroom.js'
-import React, { Component } from 'react';
-import '../styles/App.css';
-import Title from './Title.js'
-import SendMessageForm from './SendMessageForm.js'
-import LogInForm from './LogInForm.js'
-import {db} from './firebase.js'
+import React, { Component } from "react";
+import "../styles/App.css";
+import Title from "./Title.js";
+import LogInForm from "./LogInForm.js";
+import Chatroom from "./Chatroom.js";
+import SendMessageForm from "./SendMessageForm.js";
+import { db } from "./firebase.js";
+import { connect } from "react-redux";
+import { logIn, logOut, getMessages } from "../redux/actions.js";
 
 class App extends Component {
-  username = "";
-  state = {
-    isLogin: false,
-    messages: []
+  componentDidMount() {
+    const messagesRef = db.ref("messages");
+    messagesRef.on("value", snapshot => {
+      this.props.HandleGetMessages(Object.values(snapshot.val()));
+    });
+  }
+
+  onSendMessage = message => {
+    const now = Date.now();
+    const msg = {
+      id: now,
+      name: this.props.username,
+      text: message
+    };
+    db.ref(`/messages/${now}`).set(msg);
   };
 
-  onLogIn = (login) => {
-    this.username = login
-    this.setState({
-      isLogin: true
-    })
-  }
-
-  componentDidMount(){
-    const messagesRef = db.ref('messages');
-		messagesRef.on('value', (snapshot) => {
-			this.setState({ 
-        messages: Object.values(snapshot.val()) });
-		});
-  }
-
-  onLogOut = () => {
-    this.username = ''
-    this.setState({
-      isLogin: false
-    })
-  }
-
-  onSubmitMessage = (message) => {
-    const now = Date.now()
-    const msg = {
-          id: now,
-          name: this.username,
-          text: message
-    }
-    db.ref(`/messages/${now}`).set(msg);
-  }
-
   render() {
-    if (this.state.isLogin) {
+    if (this.props.isLogin) {
       return (
         <div className="Chat">
           <Title
-            login={this.username}
-            onLogOut={this.onLogOut} />
+            login={this.props.username}
+            onLogOut={this.props.HandleLogOut}
+          />
           <Chatroom
-            username={this.username}
-            messages={this.state.messages} />
-          <SendMessageForm
-            onSubmit={this.onSubmitMessage} />
+            username={this.props.username}
+            messages={this.props.messages}
+          />
+          <SendMessageForm sendMessage={this.onSendMessage} />
         </div>
       );
-    }
-    else {
+    } else {
       return (
-        <div className='chat-login'>
-          <LogInForm
-            onLogIn={this.onLogIn} />
+        <div className="chat-login">
+          <LogInForm onLogIn={this.props.HandleLogIn} />
         </div>
-      )
+      );
     }
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    isLogin: state.isLogin,
+    messages: state.messages,
+    username: state.username
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    HandleLogIn(username) {
+      dispatch(logIn(username));
+    },
+    HandleLogOut() {
+      dispatch(logOut());
+    },
+    HandleGetMessages(messages) {
+      dispatch(getMessages(messages));
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
