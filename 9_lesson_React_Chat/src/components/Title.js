@@ -11,7 +11,7 @@ class Title extends Component {
   render() {
     return (
       <div className="Title">
-        <h1>Chat v0.5</h1>
+        <h1>Chat v0.6</h1>
         <div className="logOut" onClick={this.logOut}>
           {this.props.login}
           <div className="logOut-btn">
