@@ -61,8 +61,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    HandleLogIn(username) {
-      dispatch(logIn(username));
+    HandleLogIn() {
+      dispatch(logIn());
     },
     HandleLogOut() {
       dispatch(logOut());

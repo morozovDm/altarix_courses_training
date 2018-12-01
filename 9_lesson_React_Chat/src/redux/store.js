@@ -4,7 +4,8 @@ import reducer from "./reducer";
 const initialState = {
   isLogin: false,
   messages: [],
-  username: ""
+  username: "",
+  currentMessage: ""
 };
 
 const store = createStore(reducer, initialState);

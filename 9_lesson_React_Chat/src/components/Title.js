@@ -4,7 +4,6 @@ import logOutImg from "../resources/logout.svg";
 
 class Title extends Component {
   logOut = e => {
-    console.log(this.props);
     this.props.onLogOut();
   };
 
