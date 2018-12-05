@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import reducer from "./reducer";
 
 const initialState = {
@@ -8,6 +9,6 @@ const initialState = {
   currentMessage: ""
 };
 
-const store = createStore(reducer, initialState);
+const store = createStore(reducer, initialState, applyMiddleware(thunk));
 
 export default store;

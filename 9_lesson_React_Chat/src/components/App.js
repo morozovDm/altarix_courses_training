@@ -6,24 +6,21 @@ import Chatroom from "./Chatroom.js";
 import SendMessageForm from "./SendMessageForm.js";
 import { db } from "./firebase.js";
 import { connect } from "react-redux";
-import { logIn, logOut, getMessages } from "../redux/actions.js";
+import {
+  logIn,
+  logOut,
+  getMessages,
+  subscribeToFireBase,
+  sendMessage
+} from "../redux/actions.js";
 
 class App extends Component {
   componentDidMount() {
-    const messagesRef = db.ref("messages");
-    messagesRef.on("value", snapshot => {
-      this.props.HandleGetMessages(Object.values(snapshot.val()));
-    });
+    this.props.HandleSubscribeToFirebase();
   }
 
   onSendMessage = message => {
-    const now = Date.now();
-    const msg = {
-      id: now,
-      name: this.props.username,
-      text: message
-    };
-    db.ref(`/messages/${now}`).set(msg);
+    this.props.HandleSendMessage(message);
   };
 
   render() {
@@ -69,6 +66,12 @@ function mapDispatchToProps(dispatch) {
     },
     HandleGetMessages(messages) {
       dispatch(getMessages(messages));
+    },
+    HandleSubscribeToFirebase() {
+      dispatch(subscribeToFireBase(dispatch));
+    },
+    HandleSendMessage(message) {
+      dispatch(sendMessage(dispatch, message));
     }
   };
 }

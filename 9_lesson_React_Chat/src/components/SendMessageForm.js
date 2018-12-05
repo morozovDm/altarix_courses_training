@@ -17,7 +17,6 @@ class SendMessageForm extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <form className="SendMessageForm" onSubmit={this.onSendMessage}>
         <input
