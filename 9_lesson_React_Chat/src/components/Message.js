@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "../styles/Message.css";
 import ClassNames from "classnames";
 import icon from "../resources/anonymus.svg";
 
-class Message extends Component {
+class Message extends PureComponent {
   render() {
     var msg = ClassNames({
       message: true,
