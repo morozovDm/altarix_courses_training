@@ -50,7 +50,7 @@ export function subscribeToFireBase(dispatch) {
 }
 
 export function sendMessage(message, username) {
-  return dispatch => {
+  return () => {
     const now = Date.now();
     const msg = {
       id: now,
