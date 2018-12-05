@@ -20,10 +20,11 @@ class App extends Component {
   }
 
   onSendMessage = message => {
-    this.props.HandleSendMessage(message);
+    this.props.HandleSendMessage(message, this.props.username);
   };
 
   render() {
+    console.log(this.props);
     if (this.props.isLogin) {
       return (
         <div className="Chat">
@@ -70,8 +71,8 @@ function mapDispatchToProps(dispatch) {
     HandleSubscribeToFirebase() {
       dispatch(subscribeToFireBase(dispatch));
     },
-    HandleSendMessage(message) {
-      dispatch(sendMessage(dispatch, message));
+    HandleSendMessage(message, username) {
+      dispatch(sendMessage(message, username));
     }
   };
 }

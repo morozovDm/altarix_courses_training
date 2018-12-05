@@ -49,12 +49,12 @@ export function subscribeToFireBase(dispatch) {
   };
 }
 
-export function sendMessage(dispatch, message) {
+export function sendMessage(message, username) {
   return dispatch => {
     const now = Date.now();
     const msg = {
       id: now,
-      name: this.props.username,
+      name: username,
       text: message
     };
     db.ref(`/messages/${now}`).set(msg);
