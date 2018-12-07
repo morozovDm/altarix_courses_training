@@ -1,0 +1,51 @@
+.message {
+  padding: 0 10px;
+  list-style: none;
+  margin: 10px 0;
+  display: flex;
+  color: grey;
+  font-size: 10px;
+}
+
+.msg-sender {
+  font-size: 12px;
+  width: 60px;
+}
+
+.msg-content {
+  background: #3ba0ee;
+  color: white;
+  font-size: 14px;
+  padding: 5px 13px;
+  border-radius: 10px;
+  margin: 5px 10px;
+  min-width: 60px;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  word-break: break-word;
+  border-bottom-left-radius: 0; /*сообщение от собеседника*/
+  font-family: "Montserrat", sans-serif;
+}
+
+.message img {
+  margin-top: 10px;
+  width: 38px;
+  border-radius: 15px;
+}
+
+.message.right {
+  /*сообщение от пользователя*/
+  margin-left: auto;
+  clear: both;
+}
+
+.message.right .msg-content {
+  color: black;
+  background-color: #e6e6e6;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+}
+
+.message.right :first-child {
+  order: 2;
+}
