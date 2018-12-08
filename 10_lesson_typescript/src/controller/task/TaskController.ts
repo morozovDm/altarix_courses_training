@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import TaskHandler from './TaskHandler'
-var router = express.Router()
+const router = express.Router()
 
 router.use(bodyParser.urlencoded({ extended: true }));
 

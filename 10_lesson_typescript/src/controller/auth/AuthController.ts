@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import VerifyToken from '../helpers/VerifyToken'
 import AuthHandler from './AuthHandler'
 
-let router = express.Router()
+const router = express.Router()
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
