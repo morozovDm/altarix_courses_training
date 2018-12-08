@@ -23,5 +23,12 @@
     "@types/jsonwebtoken": "^8.3.0",
     "@types/module-alias": "^2.0.0",
     "@types/mongoose": "^5.3.3"
+  },
+  "_moduleAliases": {
+      "@config": "src/config",
+      "@auth": "src/controller/auth",
+      "@task": "src/controller/task",
+      "@helpers": "src/controller/helpers",
+      "@model": "src/model"
   }
 }
