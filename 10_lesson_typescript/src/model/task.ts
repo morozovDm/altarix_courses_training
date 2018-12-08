@@ -1,17 +1,20 @@
-import mongoose from 'mongoose'
+import { Document, Schema, model } from 'mongoose';
 
-const TaskSchema = new mongoose.Schema({
-  name:{
+const TaskSchema = new Schema({
+  name: {
     type: String,
-    unique: true, 
+    unique: true,
     required: true
   },
-  status:{
+  status: {
     type: String,
-    unique: true, 
+    unique: true,
     required: true
   },
-},{collection: "Tasks"})
+}, { collection: "Tasks" });
 
-const Task = mongoose.model('Tasks', TaskSchema);
-export default Task;
+export interface ITask extends Document {
+  name: string;
+  status: string;
+}
+export const TaskModel = model<ITask>('Tasks', TaskSchema);

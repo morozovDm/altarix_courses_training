@@ -1,20 +1,20 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import config from './config/config'
-import AuthController from './controller/auth/AuthController'
-import TaskController from './controller/task/TaskController'
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import config from '@config/config';
+import AuthController from '@auth/AuthController';
+import TaskController from '@task/TaskController';
 
-const { appPort, mongoUri } = config
+const { appPort, mongoUri } = config;
+const app = express();
 
-const app = express()
-app.use(cors())
-app.get('/', function (req:express.Request, res:express.Response) {
+app.use(cors());
+app.get('/', function (req: express.Request, res: express.Response) {
     res.status(200).send('API works.');
 });
 
-  app.use('/auth', AuthController)
-  app.use('/task', TaskController)
+app.use('/auth', AuthController);
+app.use('/task', TaskController);
 
 const db = mongoose.connect(mongoUri)
     .then(() => {
@@ -23,5 +23,5 @@ const db = mongoose.connect(mongoUri)
             () => console.log(`Listening on port ${appPort}`)
         )
     })
-    .catch(err => console.log(`Error connecting to ${mongoUri}`))
+    .catch((err: Error) => console.log(`Error connecting to ${mongoUri}`));
 

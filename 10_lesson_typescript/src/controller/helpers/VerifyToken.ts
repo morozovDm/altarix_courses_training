@@ -1,21 +1,18 @@
-import jwt from 'jsonwebtoken'
-import config  from '../../config/config'
+import jwt from 'jsonwebtoken';
+import config from '@config/config';
+import { Request, Response, NextFunction } from 'express';
 
-function verifyToken(req:any, res:any, next:any) {
-
-  const token = req.headers['x-access-token']
+const verifyToken = (req: Request, res: Response, next: NextFunction) => {
+  const token = <string>req.headers['x-access-token'];
   if (!token) {
-    return res.status(403).send({ auth: false, message: 'No token provided.' })
+    return res.status(403).send({ auth: false, message: 'No token provided.' });
   }
 
-  jwt.verify(token, config.jwtSecret, (err:any, decoded:any) => {
+  jwt.verify(token, config.jwtSecret, (err: Error) => {
     if (err) {
       return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
     }
-
-    req.userId = decoded.id;
     next();
   })
 }
-
 export default verifyToken;

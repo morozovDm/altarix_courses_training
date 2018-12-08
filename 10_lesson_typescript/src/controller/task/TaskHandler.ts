@@ -1,63 +1,65 @@
-import express from 'express'
-import jwt from 'jsonwebtoken'
-import Task from '../../model/task'
-import config from '../../config/config'
+import {Request, Response} from 'express';
+import jwt from 'jsonwebtoken';
+import { TaskModel, ITask } from '@model/task';
+import config from '@config/config';
 
-const getAll = (req: any, res: express.Response) => {
+const getAll = (req: Request, res: Response) => {
   let decoded: any;
+  const token = <string>req.headers['x-access-token'];
   try {
-    decoded = jwt.verify(req.headers['x-access-token'], config.jwtSecret);
+    decoded = jwt.verify(token, config.jwtSecret);
   } catch (e) {
     return res.status(401).send('unauthorized');
   }
-  Task.find({ ownerId: decoded.id })
+  TaskModel.find({ ownerId: decoded.id })
     .exec()
-    .then((task: any) => {
+    .then((task: ITask | ITask[] | null) => {
       res.status(200).send(task);
     })
-    .catch(err => {
+    .catch((err: Error) => {
       if (err) {
         return res.status(500).send("There was a problem finding the tasks.");
       }
     })
 }
 
-const getById = (req: express.Request, res: express.Response) => {
-  Task.findById(req.params.id)
+const getById = (req: Request, res: Response) => {
+  TaskModel.findById(req.params.id)
     .exec()
-    .then((task) => {
+    .then((task: ITask | null) => {
       if (!task) {
         return res.status(404).send("No task found.");
       }
       res.status(200).send(task);
     })
-    .catch(err => {
+    .catch((err: Error) => {
       if (err) {
         return res.status(500).send("There was a problem finding the task.");
       }
     })
 };
 
-const deleteById = (req: express.Request, res: express.Response) => {
-  Task.findByIdAndRemove(req.params.id)
+const deleteById = (req: Request, res: Response) => {
+  TaskModel.findByIdAndRemove(req.params.id)
     .exec()
-    .then((task: any) => {
-      res.status(200).send("Task: " + task.name + " was deleted.");
+    .then((task: ITask | null) => {
+      if (task)
+        res.status(200).send(`Task: ${task.name} was deleted.`);
     })
-    .catch(err => {
+    .catch((err: Error) => {
       if (err) {
         return res.status(500).send("There was a problem deleting the task.");
       }
     })
 };
 
-const updateById = (req: express.Request, res: express.Response) => {
-  Task.findByIdAndUpdate(req.params.id, req.body, { new: true })
+const updateById = (req: Request, res: Response) => {
+  TaskModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .exec()
-    .then((task) => {
+    .then((task: ITask | null) => {
       res.status(200).send(task);
     })
-    .catch(err => {
+    .catch((err: Error) => {
       if (err) {
         return res.status(500).send("There was a problem updating the task.");
       }

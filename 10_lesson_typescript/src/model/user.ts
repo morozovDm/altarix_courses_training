@@ -18,4 +18,4 @@ export interface IUser extends Document {
   password: string;
 }
 
-export const UserModel = model('Users', UserSchema);
+export const UserModel = model<IUser>('Users', UserSchema);
