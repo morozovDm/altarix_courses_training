@@ -42,7 +42,7 @@ const register = (req: Request, res: Response) => {
         return res.status(401).json({ message: "username is taken, please try again" });
       }
       const hashingPpassword = HashPassword(password);
-      new UserModel({ username, hashingPpassword }).save();
+      return new UserModel({ username, hashingPpassword }).save;
     })
     .then(() => res.status(200).send("item saved to database"))
     .catch((err: Error) => {
