@@ -34,15 +34,15 @@ const login = (req: Request, res: Response) => {
 const logout = (req: Request, res: Response) => res.status(200).send({ auth: false, token: null })
 
 const register = (req: Request, res: Response) => {
-  let { username, password } = req.body;
+  const { username, password } = req.body;
   UserModel.findOne({ username })
     .exec()
     .then((user: IUser | null) => {
       if (user) {
         return res.status(401).json({ message: "username is taken, please try again" });
       }
-      password = HashPassword(password);
-      new UserModel({ username, password }).save();
+      const hashingPpassword = HashPassword(password);
+      new UserModel({ username, hashingPpassword }).save();
     })
     .then(() => res.status(200).send("item saved to database"))
     .catch((err: Error) => {

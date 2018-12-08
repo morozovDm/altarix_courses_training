@@ -3,16 +3,13 @@ interface Palindrome {
 }
 
 class SuperPalindrome implements Palindrome{
-    private currentMessage: string;
 
-    constructor(message: string) {
-        this.currentMessage = message;
-     }
+    constructor(private currentMessage: string) {}
 
     generatePalindrome(): string { 
-        return "".concat(this.currentMessage.substring(0, this.currentMessage.length - 1), this.currentMessage.split('').reverse().join(''))
+        return `${this.currentMessage.substring(0, this.currentMessage.length - 1)}${this.currentMessage.split('').reverse().join('')}`
     }
 }
 
-let customPalindrome = new SuperPalindrome('abcd');
+const customPalindrome = new SuperPalindrome('abcd');
 console.log(customPalindrome.generatePalindrome());
