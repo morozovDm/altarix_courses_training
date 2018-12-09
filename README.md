@@ -13,3 +13,4 @@ Altarix's courses training by Morozov Dmitriy
     Демонстрация:https://repl.it/@DmitriiMorozov2/ToDoListAPI
 9.  9_lesson_React.Js_API - API Chat - простой чат на реакте
     Chat API демонстрация: https://lrl0m29qq.codesandbox.io/
+10.  10_lesson_typescript - основы typescript, 1.Палиндром, 2.APi ToDo list convert to typescript
