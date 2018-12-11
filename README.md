@@ -1,16 +1,27 @@
-# altarix_courses_training
-Altarix's courses training by Morozov Dmitriy
-****
+# AppMyProject
 
-1.  first lesson - Типы данных
-2.  second lesson - Замыкания, bind
-3.  3_lesson - ООП, задача с будильником
-4.  4_lesson_calendar - DOM, задача с календарем
-5.  5_lesson_gitHub_user - XMLHTTPRequest, fetch, JSON, Promise, задача с поиском пользователей gitHub
-6.  6_lesson_ES2015 - Современные возможности ES2015
-7.  7_lesson_Node.Js_1 - Основы Node.JS, создание модуля "калькулятор"
-8.  8_lesson_Node.Js_2_API - Rest APi ToDo List, с использованием модулей express, jwt, cors, body-parser, mongoose(mongoDB) 
-    Демонстрация:https://repl.it/@DmitriiMorozov2/ToDoListAPI
-9.  9_lesson_React.Js_API - API Chat - простой чат на реакте
-    Chat API демонстрация: https://lrl0m29qq.codesandbox.io/
-10.  10_lesson_typescript - основы typescript, 1.Палиндром, 2.APi ToDo list convert to typescript
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
