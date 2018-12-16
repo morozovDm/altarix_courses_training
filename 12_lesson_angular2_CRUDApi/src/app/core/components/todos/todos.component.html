@@ -1,0 +1,5 @@
+<li *ngFor="let todo of todosPromise | async">
+  <div>{{todo.title}}</div>
+  <div>{{todo.userId}}</div>
+  <div>{{todo.completed}}</div>
+</li>

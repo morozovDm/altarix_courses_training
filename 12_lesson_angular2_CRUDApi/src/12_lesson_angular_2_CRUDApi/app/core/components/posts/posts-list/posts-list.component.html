@@ -1,0 +1,14 @@
+<div class='header'>
+    <h2>All posts:</h2>
+    <a routerLink='create'><h2>Create post</h2></a>
+</div>
+<div *ngIf="postsPromise | async">
+  <li *ngFor="let post of postsPromise | async">
+    Author:{{(usersPromise | async)[post.userId-1].username}}
+    <div>
+      <h3>{{post.title}}</h3>
+    </div>
+    <div>{{post.body}}</div>
+    <button (click)='goToPostDetail(post.id)'>Comments</button>
+  </li>
+</div>

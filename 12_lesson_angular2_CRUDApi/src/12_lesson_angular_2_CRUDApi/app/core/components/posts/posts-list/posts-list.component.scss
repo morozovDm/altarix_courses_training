@@ -1,0 +1,26 @@
+:host {
+  list-style: none;
+  text-align: justify;
+  li {
+    margin-top: 20px;
+    button {
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    cursor: pointer;
+    color: red;
+    transition-property: color;
+    transition-duration: 0.2s;
+  }
+  a :hover{
+    color: black;
+  }
+}
