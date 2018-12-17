@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService, Menu } from '../../services/header.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,10 @@ import { HeaderService, Menu } from '../../services/header.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private headerService: HeaderService) { }
+  constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) { }
 
   menu: Menu[] = this.headerService.menu;
 
   ngOnInit() {
   }
-
 }

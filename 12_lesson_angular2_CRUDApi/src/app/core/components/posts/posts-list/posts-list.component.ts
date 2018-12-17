@@ -22,4 +22,10 @@ export class PostsListComponent implements OnInit {
   goToPostDetail(_id: number) {
     this.router.navigate(['posts', _id]);
   }
+  editPostDetail(_id: number) {
+    this.router.navigate(['posts/edit', _id]);
+  }
+  deletePost(_id: number) {
+    this.postsService.deletePost(_id).then(() => this.postsPromise = this.postsService.getPosts());
+  }
 }

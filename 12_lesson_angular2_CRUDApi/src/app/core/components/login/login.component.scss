@@ -1,0 +1,28 @@
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  a{
+    margin-left: auto;
+    margin-right: 350px;
+    font-size: 10px;
+  }
+}
+form{
+  display: flex;
+  justify-content: flex-end;
+  &{
+    padding: 3px;
+    margin-left: 5px;
+  }
+}
+
+.logined-form{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-left: auto;
+  button{
+    cursor: pointer;
+  }
+}

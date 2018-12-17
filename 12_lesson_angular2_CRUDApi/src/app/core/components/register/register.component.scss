@@ -1,0 +1,18 @@
+form{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin:0 auto;
+  *{
+    height: 40px;
+    margin-top:10px;
+    font-size: 21px;
+  }
+  label{
+    display: flex;
+    align-items: center;
+  }
+  button{
+    cursor: pointer;
+  }
+}

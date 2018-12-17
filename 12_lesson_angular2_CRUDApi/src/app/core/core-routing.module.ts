@@ -5,7 +5,11 @@ import { AlbumsComponent } from './components/albums/albums.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { PostsListComponent } from './components/posts/posts-list/posts-list.component';
 import { PostDetailsComponent } from './components/posts/post-details/post-details.component';
-import { PostCreatorComponent } from './components/post-creator/post-creator.component';
+import { PostCreatorComponent } from './components/posts/post-creator/post-creator.component';
+import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './services/auth.guard';
+import { AnonymousGuard } from './services/anonymous.guard';
 
 const routes: Routes = [
   {
@@ -14,16 +18,29 @@ const routes: Routes = [
     redirectTo: 'posts'
   },
   {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [AnonymousGuard]
+  },
+  {
     path: 'posts',
     component: PostsListComponent
   },
   {
-    path: 'posts/:id',
-    component: PostDetailsComponent
+    path: 'posts/create',
+    pathMatch: 'full',
+    component: PostCreatorComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'posts/create',
-    component: PostCreatorComponent
+    path: 'posts/edit/:id',
+    pathMatch: 'full',
+    component: PostEditorComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'posts/:id',
+    component: PostDetailsComponent
   },
   {
     path: 'albums',

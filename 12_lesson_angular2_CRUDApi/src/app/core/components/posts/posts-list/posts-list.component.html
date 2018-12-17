@@ -1,14 +1,29 @@
 <div class='header'>
-    <h2>All posts:</h2>
-    <a routerLink='create'><h2>Create post</h2></a>
+  <h2>All posts:</h2>
+  <a routerLink='create'>
+    <h2>Create post</h2>
+  </a>
 </div>
-<div *ngIf="postsPromise | async">
+<div *ngIf="(postsPromise | async)">
   <li *ngFor="let post of postsPromise | async">
-    Author:{{(usersPromise | async)[post.userId-1].username}}
-    <div>
-      <h3>{{post.title}}</h3>
+    <div class='post'>
+      <p *ngIf="(usersPromise | async)">
+        Author
+        :<b>{{(usersPromise | async)[post.userId-1].username}}</b>
+      </p>
+      <div>
+        <h2>{{post.title}}</h2>
+      </div>
+      <div>{{post.body}}</div>
     </div>
-    <div>{{post.body}}</div>
-    <button (click)='goToPostDetail(post.id)'>Comments</button>
+    <hr>
+    <div class='post-menu'>
+      <a (click)='editPostDetail(post.id)'>Edit</a>
+      <a (click)='goToPostDetail(post.id)'>View</a>
+      <a (click)='deletePost(post.id)'>Trash</a>
+    </div>
   </li>
+</div>
+<div class="loader" *ngIf="!(postsPromise | async)">
+  <h1>LOADING...</h1>
 </div>

@@ -1,7 +1,13 @@
 ul {
   display: flex;
   list-style: none;
+  background-color: #0087be;
+  height: 50px;
+  align-items: center;
   li {
     margin-left: 150px;
+  }
+  .link {
+    color: white;
   }
 }

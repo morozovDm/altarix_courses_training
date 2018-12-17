@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService, Post } from 'src/app/core/services/posts.service';
 import { CommentsService, Comment } from 'src/app/core/services/comments.service';
+import { User, UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-post-details',
@@ -11,10 +12,12 @@ import { CommentsService, Comment } from 'src/app/core/services/comments.service
 export class PostDetailsComponent implements OnInit {
   private post: Post;
   private commentsPromise: Promise<Comment[]>;
+  private usersPromise: Promise<User[]>;
   constructor(
     private activatedRoute: ActivatedRoute,
     private postsService: PostsService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit() {
@@ -24,8 +27,5 @@ export class PostDetailsComponent implements OnInit {
         this.post = post;
       });
       this.commentsPromise = this.commentsService.getComments();
-      this.commentsPromise.then((comments) => {
-        console.log(comments);
-      });
     }
 }

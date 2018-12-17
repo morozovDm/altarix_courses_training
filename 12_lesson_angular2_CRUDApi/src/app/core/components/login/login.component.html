@@ -1,0 +1,15 @@
+<div class="login-form" *ngIf="!(isAuthorized | async)">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="username" placeholder="username">
+    <input type="password" formControlName="password" placeholder="password">
+    <div class='buttons'>
+      <button type="submit">Log In</button>
+    </div>
+  </form>
+  <a routerLink="register">Sign Up</a>
+</div>
+
+<div class="logined-form" *ngIf="(isAuthorized | async)">
+    <p>You loggined as: <b>{{(authorizedUsername | async)}}</b></p>
+    <button (click)="onLogout()">Log Out</button>
+  </div>
