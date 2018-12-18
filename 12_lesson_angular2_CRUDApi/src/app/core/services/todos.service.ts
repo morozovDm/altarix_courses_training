@@ -18,4 +18,16 @@ export class TodosService {
   getTodos(): Promise<Todo[]> {
     return this.http.get<Todo[]>('http://jsonplaceholder.typicode.com/todos').toPromise();
   }
+  getTodo(id: string): Promise<Todo> {
+    return this.http.get<Todo>(`http://jsonplaceholder.typicode.com/todos/${id}`).toPromise();
+  }
+  createTodo(body: Todo) {
+    return this.http.post<Todo[]>('http://jsonplaceholder.typicode.com/todos', body).toPromise();
+  }
+  updateTodo(body: Todo) {
+    return this.http.put<Todo[]>(`http://jsonplaceholder.typicode.com/todos/${body.id}`, body).toPromise();
+  }
+  deleteTodo(body: Todo) {
+    return this.http.delete<Todo[]>(`http://jsonplaceholder.typicode.com/todos/${body.id}`).toPromise();
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlbumsService, Album } from '../../services/albums.service';
 
 @Component({
@@ -6,14 +6,10 @@ import { AlbumsService, Album } from '../../services/albums.service';
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.scss']
 })
-export class AlbumsComponent implements OnInit {
+export class AlbumsComponent {
 
-  private albumsPromise: Promise<Album[]>;
+  private albumsPromise: Promise<Album[]> = this.albumsService.getAlbums();
 
   constructor(private albumsService: AlbumsService) { }
-
-  ngOnInit() {
-    this.albumsPromise = this.albumsService.getAlbums();
-  }
 
 }

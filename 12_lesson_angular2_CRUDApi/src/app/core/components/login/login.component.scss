@@ -11,9 +11,8 @@
 form{
   display: flex;
   justify-content: flex-end;
-  &{
-    padding: 3px;
-    margin-left: 5px;
+  *{
+    margin-left: 10px;
   }
 }
 
@@ -22,7 +21,9 @@ form{
   flex-direction: column;
   width: 200px;
   margin-left: auto;
-  button{
-    cursor: pointer;
-  }
+}
+
+button{
+  cursor: pointer;
+  padding: 5px;
 }

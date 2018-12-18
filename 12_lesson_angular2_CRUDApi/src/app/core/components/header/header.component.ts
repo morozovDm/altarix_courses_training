@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderService, Menu } from '../../services/header.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -8,12 +8,10 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
-  constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) { }
+export class HeaderComponent {
 
   menu: Menu[] = this.headerService.menu;
 
-  ngOnInit() {
-  }
+  constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) { }
+
 }

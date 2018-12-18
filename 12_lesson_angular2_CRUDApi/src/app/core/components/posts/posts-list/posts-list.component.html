@@ -1,7 +1,7 @@
 <div class='header'>
-  <h2>All posts:</h2>
+  <h4>All posts:</h4>
   <a routerLink='create'>
-    <h2>Create post</h2>
+    <h4>Create post</h4>
   </a>
 </div>
 <div *ngIf="(postsPromise | async)">
@@ -12,7 +12,7 @@
         :<b>{{(usersPromise | async)[post.userId-1].username}}</b>
       </p>
       <div>
-        <h2>{{post.title}}</h2>
+        <h4>{{post.title}}</h4>
       </div>
       <div>{{post.body}}</div>
     </div>

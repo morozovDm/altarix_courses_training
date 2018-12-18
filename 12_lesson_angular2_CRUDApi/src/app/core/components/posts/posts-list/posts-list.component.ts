@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Post, PostsService } from 'src/app/core/services/posts.service';
 import { User, UsersService } from 'src/app/core/services/users.service';
 import { Router } from '@angular/router';
@@ -8,17 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './posts-list.component.html',
   styleUrls: ['./posts-list.component.scss']
 })
-export class PostsListComponent implements OnInit {
+export class PostsListComponent {
 
-  private postsPromise: Promise<Post[]>;
-  private usersPromise: Promise<User[]>;
+  private postsPromise: Promise<Post[]> = this.postsService.getPosts();
+  private usersPromise: Promise<User[]> = this.usersService.getUsers();
 
   constructor(private postsService: PostsService, private usersService: UsersService, private router: Router) { }
 
-  ngOnInit() {
-    this.postsPromise = this.postsService.getPosts();
-    this.usersPromise = this.usersService.getUsers();
-  }
   goToPostDetail(_id: number) {
     this.router.navigate(['posts', _id]);
   }

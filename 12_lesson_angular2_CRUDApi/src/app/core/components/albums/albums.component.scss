@@ -7,5 +7,12 @@
   li {
     border: solid 2px;
     text-align: center;
+    cursor: pointer;
+    transition-property: padding background-color;
+    transition-duration: 0.2s;
+  }
+  li:hover{
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.342);
   }
 }

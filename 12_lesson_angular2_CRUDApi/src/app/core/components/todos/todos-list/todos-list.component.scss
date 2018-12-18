@@ -1,0 +1,52 @@
+h1{
+  color: white;
+  font-size: 48px;
+  font-weight: 200;
+}
+
+.wrapper{
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #0590c7;
+  padding: 10px;
+  box-shadow:-20px -20px 0px 0px rgba(100,100,100,.1);
+  border-radius: 5px;
+  color: white;
+
+}
+
+.add-todo {
+  display: flex;
+  input{
+    width: 90%;
+  }
+  button{
+    padding: 10px;
+    background-color: #00b7ff;
+  }
+}
+
+.tabs{
+  display: flex;
+  height: 30px;
+  color: white;
+  align-items: center;
+  div{
+    background-color: #0087be;
+    width: 100px;
+    margin-left: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+  }
+  div:hover{
+    background-color: #00b7ff;
+  }
+}
+
+
+.loader{
+  text-align: center;
+}
+

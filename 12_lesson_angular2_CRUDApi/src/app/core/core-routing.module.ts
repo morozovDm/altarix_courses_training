@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { AlbumsComponent } from './components/albums/albums.component';
-import { TodosComponent } from './components/todos/todos.component';
 import { PostsListComponent } from './components/posts/posts-list/posts-list.component';
 import { PostDetailsComponent } from './components/posts/post-details/post-details.component';
 import { PostCreatorComponent } from './components/posts/post-creator/post-creator.component';
@@ -10,6 +9,7 @@ import { PostEditorComponent } from './components/posts/post-editor/post-editor.
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './services/auth.guard';
 import { AnonymousGuard } from './services/anonymous.guard';
+import { TodosListComponent } from './components/todos/todos-list/todos-list.component';
 
 const routes: Routes = [
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'todos',
-    component: TodosComponent
+    component: TodosListComponent
   }
 ];
 

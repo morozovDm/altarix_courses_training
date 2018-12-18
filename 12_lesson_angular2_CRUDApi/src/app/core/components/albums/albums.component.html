@@ -3,3 +3,6 @@
     {{album.title}}
   </li>
 </div>
+<div class="loader" *ngIf="!(albumsPromise | async)">
+    <h1>LOADING...</h1>
+  </div>
