@@ -12,10 +12,12 @@ import { FilterCommentsByIdPipe } from './pipes/filter-comments-by-id.pipe';
 import { FilterUsersByIdPipe } from './pipes/filter-users-by-id.pipe';
 import { PostCreatorComponent } from './components/posts/post-creator/post-creator.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
 import { TodoComponent } from './components/todos/todo/todo.component';
 import { TodosListComponent } from './components/todos/todos-list/todos-list.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
+import { FilterByPipe } from './pipes/filter-by.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { TodosListComponent } from './components/todos/todos-list/todos-list.com
     RegisterComponent,
     LoginComponent,
     TodoComponent,
-    TodosListComponent
+    TodosListComponent,
+    LogoutComponent,
+    FilterByPipe
   ],
   imports: [CommonModule, CoreRoutingModule, HttpClientModule, ReactiveFormsModule],
   exports: [RouterModule, HeaderComponent]

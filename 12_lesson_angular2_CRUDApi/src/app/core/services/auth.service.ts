@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { BehaviorSubject } from 'rxjs';
+import { share, tap } from 'rxjs/operators';
 interface UserCredentials {
   email?: string;
   username: string;
@@ -18,31 +19,41 @@ interface ServerResponse {
 })
 export class AuthService {
 
+  private authStatusSubject = new BehaviorSubject(!!localStorage.getItem('id_token'));
+  authStatus$ = this.authStatusSubject.asObservable();
+
   constructor(private http: HttpClient) { }
 
   register(body: UserCredentials) {
-    return this.http.post('https://todolistapi--dmitriimorozov2.repl.co/auth/register', body)
-      .toPromise()
-      .then(({ token }: ServerResponse) => {
-        localStorage.setItem('id_token', token);
-        return token;
-      });
+    const login$ = this.http.post('https://todolistapi--dmitriimorozov2.repl.co/auth/register', body).pipe(
+      share());
+    login$.pipe(
+      tap(({ token }: ServerResponse) => localStorage.setItem('id_token', token)),
+      tap(({ username }: ServerResponse) => localStorage.setItem('username', username)),
+      tap(() => this.authStatusSubject.next(true))
+    );
+    return login$;
   }
 
-  login(body: UserCredentials) {
-    return this.http.post('https://todolistapi--dmitriimorozov2.repl.co/auth/login', body)
-    .toPromise()
-    .then(({token, username}: ServerResponse) => {
-      localStorage.setItem('id_token', token);
-      localStorage.setItem('username', username);
-      return token;
-    });
+  login(body: any) {
+    const login$ = this.http.post<ServerResponse>('https://todolistapi--dmitriimorozov2.repl.co/auth/login', body).pipe(
+      share());
+    login$.pipe(
+      tap(({ token }) => localStorage.setItem('id_token', token)),
+      tap(({ username }) => localStorage.setItem('username', username)),
+      tap(() => this.authStatusSubject.next(true))
+    ).subscribe();
+    return login$;
   }
 
   logout() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('username');
-    return this.http.get('https://todolistapi--dmitriimorozov2.repl.co/auth/logout').toPromise();
+    const http$ = this.http.get('https://todolistapi--dmitriimorozov2.repl.co/auth/logout').pipe(share());
+    http$.pipe(
+      tap(() => localStorage.removeItem('id_token')),
+      tap(() => localStorage.removeItem('username')),
+      tap(() => this.authStatusSubject.next(false))
+    ).subscribe();
+    return http$;
   }
 
   getAuthorizedUsername(): Promise<string> {

@@ -6,8 +6,8 @@
     <button type="submit">Add</button>
   </form>
   <hr>
-  <div class="loader" *ngIf="!(todosPromise | async)">
+  <div class="loader" *ngIf="!todos">
     <h1>LOADING...</h1>
   </div>
-  <app-todo *ngFor="let todo of todosPromise | async" [todo]="todo"></app-todo>
+  <app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
 </div>

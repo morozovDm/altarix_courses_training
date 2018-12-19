@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { share, tap } from 'rxjs/operators';
 
 export interface Post {
   id: number;
@@ -12,21 +14,26 @@ export interface Post {
   providedIn: 'root'
 })
 export class PostsService {
+
   constructor(private http: HttpClient) {}
 
-  getPosts(): Promise<Post[]> {
-    return this.http.get<Post[]>('http://jsonplaceholder.typicode.com/posts').toPromise();
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>('http://jsonplaceholder.typicode.com/posts').pipe(share());
   }
-  getPost(id: number): Promise<Post> {
-    return this.http.get<Post>(`http://jsonplaceholder.typicode.com/posts/${id}`).toPromise();
+
+  getPost(id: number): Observable<Post> {
+    return this.http.get<Post>(`http://jsonplaceholder.typicode.com/posts/${id}`).pipe(share());
   }
-  deletePost(id: number) {
-    return this.http.delete(`http://jsonplaceholder.typicode.com/posts/${id}`).toPromise();
+
+  addPost(post: Post): Observable<Post> {
+    return this.http.post<Post>(`http://jsonplaceholder.typicode.com/posts/${post.id}`, post).pipe(share());
   }
-  addPost(post: Post) {
-    return this.http.post('http://jsonplaceholder.typicode.com/posts', post).toPromise();
+
+  updatePost(post: Post): Observable<Post> {
+    return this.http.put<Post>(`http://jsonplaceholder.typicode.com/posts/${post.id}`, post).pipe(share());
   }
-  updatePost(post: Post) {
-    return this.http.put(`http://jsonplaceholder.typicode.com/posts/${post.id}`, post).toPromise();
+
+  deletePost(id: number): Observable<Post> {
+    return this.http.delete<Post>(`http://jsonplaceholder.typicode.com/posts/${id}`).pipe(share());
   }
 }

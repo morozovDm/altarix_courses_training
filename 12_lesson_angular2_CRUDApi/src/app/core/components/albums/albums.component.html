@@ -1,8 +1,8 @@
 <div class='container'>
-  <li *ngFor="let album of albumsPromise | async">
+  <li *ngFor="let album of albums">
     {{album.title}}
   </li>
 </div>
-<div class="loader" *ngIf="!(albumsPromise | async)">
+<div class="loader" *ngIf="!albums">
     <h1>LOADING...</h1>
   </div>

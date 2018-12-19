@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import { PostsService, Post } from 'src/app/core/services/posts.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { PostsService } from 'src/app/core/services/posts.service';
+import { ActivatedRoute } from '@angular/router';
+import { HelperService } from 'src/app/core/services/helper.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-creator',
@@ -15,12 +17,11 @@ export class PostCreatorComponent {
     body: new FormControl('', [Validators.required])
   });
 
-  constructor(private postsService: PostsService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private postsService: PostsService, private helperService: HelperService, private activatedRoute: ActivatedRoute) { }
 
   onSubmit() {
-    this.postsService.addPost(this.form.getRawValue()).then(() => {
-      return this.router.navigate(['/']);
-    });
+    this.postsService.addPost(this.form.getRawValue()).pipe(tap(() => {
+      this.helperService.goBack();
+    })).subscribe();
   }
-
 }

@@ -6,10 +6,12 @@ import { PostsListComponent } from './components/posts/posts-list/posts-list.com
 import { PostDetailsComponent } from './components/posts/post-details/post-details.component';
 import { PostCreatorComponent } from './components/posts/post-creator/post-creator.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
-import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './services/auth.guard';
 import { AnonymousGuard } from './services/anonymous.guard';
 import { TodosListComponent } from './components/todos/todos-list/todos-list.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,16 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate: [AnonymousGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AnonymousGuard]
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'posts',

@@ -10,8 +10,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent {
 
-  menu: Menu[] = this.headerService.menu;
+  authorized$ = this.authService.authStatus$;
 
+  titleMenu: Menu[] = this.headerService.titleMenu;
+  authMenu: Menu[] = this.headerService.authMenu;
   constructor(private headerService: HeaderService, private authService: AuthService, private router: Router) { }
 
 }
