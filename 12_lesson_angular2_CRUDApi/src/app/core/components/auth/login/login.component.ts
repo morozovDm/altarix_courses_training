@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { tap, partition, catchError, pluck } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { of, Observable } from 'rxjs';
+import { partitionByErrorCode } from 'src/app/core/services/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +17,16 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
+  error$: Observable<any>;
+
   private isAuthorized: Promise<boolean> = this.authService.isAuthorized();
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    this.authService.login(this.form.getRawValue()).subscribe();
+    const [hasError$, noError$] = partitionByErrorCode(
+      this.authService.login(this.form.getRawValue())
+      .pipe(catchError((error) => of(error)))
+    );
+    this.error$ = hasError$.pipe(pluck('error'));
   }
 }

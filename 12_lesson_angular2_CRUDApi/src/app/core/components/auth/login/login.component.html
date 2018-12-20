@@ -5,3 +5,4 @@
     <button type="submit">Log In</button>
   </div>
 </form>
+<div *ngIf="error$ | async as error">{{error | json}}</div>
