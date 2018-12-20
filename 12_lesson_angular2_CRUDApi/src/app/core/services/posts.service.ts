@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { share, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { share, catchError, tap } from 'rxjs/operators';
+import { partitionByErrorCode } from './helper.service';
+interface ServerResponse {
+  token: string;
+  status: number;
+}
 
 export interface Post {
   id: number;
@@ -10,17 +15,29 @@ export interface Post {
   title: string;
 }
 
+export interface PostPartition {
+  noError$: Observable<Post>;
+  hasError$: Observable<any>;
+}
+
+export const createPostPartition = (hasError, noError) => ({
+  hasError$: hasError,
+  noError$: noError
+});
+
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
   constructor(private http: HttpClient) {}
-
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('http://jsonplaceholder.typicode.com/posts').pipe(share());
+  getPosts() {
+    const [hasError$, noError$] = partitionByErrorCode(
+      this.http.get<ServerResponse>('http://jsonplaceholder.typicode.com/posts')
+        .pipe(share(), catchError((error) => of(error)))
+    );
+    return createPostPartition(hasError$, noError$);
   }
-
   getPost(id: number): Observable<Post> {
     return this.http.get<Post>(`http://jsonplaceholder.typicode.com/posts/${id}`).pipe(share());
   }
