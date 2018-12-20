@@ -1,21 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlbumsService, Album } from '../../services/albums.service';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.scss']
 })
-export class AlbumsComponent implements OnInit {
+export class AlbumsComponent {
 
-  private albums: Album[];
+  private albums: Observable<Album[]> = this.albumsService.getAlbums();
   constructor(private albumsService: AlbumsService) { }
-
-  ngOnInit() {
-    this.albumsService.getAlbums().pipe(tap((albums: Album[]) => {
-      this.albums = albums;
-    })).subscribe();
-  }
 
 }

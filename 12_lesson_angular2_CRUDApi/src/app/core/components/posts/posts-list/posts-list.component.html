@@ -24,6 +24,7 @@
     </div>
   </li>
 </div>
+<div *ngIf="error$ | async as error">{{error | json}}</div>
 <div class="loader" *ngIf="!posts">
   <h1>LOADING...</h1>
 </div>

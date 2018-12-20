@@ -1,11 +1,11 @@
 <div *ngIf='(commentsPromise | async)'>
   <div>
-    <h4>{{post?.title}}</h4>
-    {{post?.body}}
+    <h4>{{(post | async)?.title}}</h4>
+    {{(post | async)?.body}}
   </div>
   <h4>Comments:</h4>
   <ul class='comments'>
-    <li *ngFor="let comment of (commentsPromise | async) | filterCommentsById : {'id':post?.id}">
+    <li *ngFor="let comment of (commentsPromise | async) | filterCommentsById : {'id':(post | async)?.id}">
       <div>
         <h5>{{comment?.name}}</h5>
         {{comment?.body}}

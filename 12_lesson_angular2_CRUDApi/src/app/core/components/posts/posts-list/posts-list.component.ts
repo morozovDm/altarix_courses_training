@@ -3,7 +3,7 @@ import { Post, PostsService } from 'src/app/core/services/posts.service';
 import { User, UsersService } from 'src/app/core/services/users.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'app-posts',
@@ -13,12 +13,18 @@ import { tap } from 'rxjs/operators';
 export class PostsListComponent implements OnInit {
 
   private posts: Post[];
+  private error$: Observable<any>;
   private usersPromise: Promise<User[]> = this.usersService.getUsers();
 
   constructor(private postsService: PostsService, private usersService: UsersService, private router: Router) { }
 
   ngOnInit() {
-    this.postsService.getPosts().pipe(tap((posts: Post[]) => this.posts = posts)).subscribe();
+    const {hasError$, noError$} = this.postsService.getPosts();
+    noError$.pipe(tap((posts: Post[]) => {
+      this.posts = posts;
+    })).subscribe();
+    this.error$ = hasError$.pipe(pluck('error'));
+    this.error$.subscribe();
   }
 
   goToPostDetail(_id: number) {
@@ -31,6 +37,5 @@ export class PostsListComponent implements OnInit {
     this.postsService.deletePost(_id).pipe(tap(() => {
       this.router.navigate(['/']);
     })).subscribe();
-    // this.postsService.deletePost(_id).then(() => this.postsPromise = this.postsService.getPosts());
   }
 }
