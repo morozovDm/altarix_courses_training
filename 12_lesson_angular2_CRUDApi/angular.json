@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "angular-crud-lib": {
+      "root": "projects/angular-crud-lib",
+      "sourceRoot": "projects/angular-crud-lib/src",
+      "projectType": "library",
+      "prefix": "enl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-crud-lib/tsconfig.lib.json",
+            "project": "projects/angular-crud-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-crud-lib/src/test.ts",
+            "tsConfig": "projects/angular-crud-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-crud-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-crud-lib/tsconfig.lib.json",
+              "projects/angular-crud-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "crud-app"

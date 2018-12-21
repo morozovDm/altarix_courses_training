@@ -1,0 +1,8 @@
+<h4>Edit post</h4>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>title</label>
+  <input type="text" formControlName="title" placeholder="input title..." value="{{(post$ | async)?.title}}">
+  <label>body</label>
+  <textarea class='body' type="text" formControlName="body" placeholder="input text..." value="{{(post$ | async)?.body}}"></textarea>
+  <button type="submit">CREATE</button>
+</form>

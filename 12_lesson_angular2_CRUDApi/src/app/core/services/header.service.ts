@@ -17,9 +17,9 @@ export class HeaderService {
     {title: 'Todos', link: 'todos'}
   ];
   authMenu: Menu[] = [
-    {title: 'SignUp', link: 'register', authorized: false},
-    {title: 'LogIn', link: 'login', authorized: false},
-    {title: 'LogOut', link: 'logout', authorized: true}
+    {title: 'SignUp', link: 'auth/register', authorized: false},
+    {title: 'LogIn', link: 'auth', authorized: false},
+    {title: 'LogOut', link: 'auth/logout', authorized: true}
   ];
 
   constructor() { }

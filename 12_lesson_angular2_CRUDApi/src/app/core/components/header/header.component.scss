@@ -19,3 +19,14 @@ ul {
     color: white;
   }
 }
+
+.menu-auth {
+  display: flex;
+  list-style: none;
+  li {
+    margin-left: 10px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+  }
+}
