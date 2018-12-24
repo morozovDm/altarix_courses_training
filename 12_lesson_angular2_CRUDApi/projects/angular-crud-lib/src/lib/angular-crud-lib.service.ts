@@ -15,7 +15,7 @@ export const partitionByErrorCode = partition((error: any) => error.status !== u
 })
 export class AngularCrudService {
 
-  protected baseUrl = 'http://jsonplaceholder.typicode.com';
+  protected baseUrl: string;
   protected endPoint: string;
 
   constructor(private http: HttpClient) { }

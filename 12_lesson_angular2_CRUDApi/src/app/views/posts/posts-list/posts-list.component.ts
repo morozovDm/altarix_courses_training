@@ -11,12 +11,10 @@ import { UsersService } from 'src/app/shared/services/users.service';
   styleUrls: ['./posts-list.component.scss']
 })
 
-
 export class PostsListComponent implements OnInit {
 
   posts$: Observable<Post[]>;
   error$: Observable<any>;
-
   constructor(private postsService: PostsService, private usersService: UsersService, private router: Router) { }
 
   ngOnInit() {
