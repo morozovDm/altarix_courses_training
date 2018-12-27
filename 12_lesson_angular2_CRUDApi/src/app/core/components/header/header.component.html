@@ -1,0 +1,10 @@
+<div class="menu-auth">
+  <li *ngFor="let item of authMenu | filterBy: 'authorized' : (authorized$ | async)">
+    <a routerLinkActive="active" routerLink="{{item.link}}">{{item.title}}</a>
+  </li>
+</div>
+<ul class="menu">
+  <li class="menu-item" *ngFor="let menuItem of titleMenu">
+    <a class="link" routerLinkActive="active" routerLink="{{menuItem.link}}">{{menuItem.title}}</a>
+  </li>
+</ul>

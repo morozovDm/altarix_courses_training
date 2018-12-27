@@ -1,0 +1,29 @@
+.todo{
+  display: grid;
+  grid-template-columns: 0.5fr 5fr 1fr 0.5fr;
+  margin-top: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.6);
+  padding: 15px;
+  cursor: pointer;
+  transition-property: padding border;
+  transition-duration: 0.2s;
+  background-color:rgba(255,255,255,0.3);
+  color: white;
+  div {
+    max-width: 300px;
+    text-overflow: clip;
+  }
+  button{
+    z-index: 99;
+  }
+}
+
+.todo:hover{
+  padding: 15px;
+  border: solid 2px #01b7ff;
+}
+
+.completed {
+  background-color: #66bb6a9d;
+  text-decoration:line-through;
+}

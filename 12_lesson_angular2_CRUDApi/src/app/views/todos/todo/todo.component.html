@@ -1,0 +1,6 @@
+<div class='todo' [ngClass]="todo.completed ? 'completed' : ''" (click)="onStatusChanged()">
+  <input type='checkbox' [checked]="todo.completed">
+  <div>{{todo.title}}</div>
+  <div>{{todo.userId}}</div>
+  <button (click)='onDeleteTodo()'>X</button>
+</div>

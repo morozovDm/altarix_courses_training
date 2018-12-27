@@ -1,0 +1,8 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="username" placeholder="username">
+  <input type="password" formControlName="password" placeholder="password">
+  <div class='buttons'>
+    <button type="submit">Log In</button>
+  </div>
+</form>
+<div *ngIf="error$ | async as error">{{error | json}}</div>

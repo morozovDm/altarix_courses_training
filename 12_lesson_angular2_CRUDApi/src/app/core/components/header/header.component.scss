@@ -1,0 +1,32 @@
+ul {
+  display: flex;
+  list-style: none;
+  background-color: #0087be;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  li {
+    padding: 50px 50px;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+  }
+  li:hover {
+    background-color: rgba(56, 55, 55, 0.233);
+  }
+
+  .link {
+    color: white;
+  }
+}
+
+.menu-auth {
+  display: flex;
+  list-style: none;
+  li {
+    margin-left: 10px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+  }
+}
